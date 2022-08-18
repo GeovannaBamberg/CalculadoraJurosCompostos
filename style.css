@@ -43,6 +43,7 @@ h1{
    letter-spacing: 0.4em;
    width: 49.5vw;
    padding-left: 5px;
+   transition: 1s;
 
 }
 .dados{
