@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Juros</title>
+   <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <body>
+        <section class="conteiner">
+            <div class="bg-H1">
+                <h1>CALCULADORA <br>JUROS<br> COMPOSTOS</h1>
+            </div>
+            <div class="dados">
+                <label>Deposito Inicial</label> <br>
+                <input type="number" id="valor-inicial">
+                <br>
+                <label>Deposito Mensal</label> <br>
+                <input type="number" id="valor-mensal">
+                <br>
+                <label>Taxa de Juros</label> <br>
+                <input type="number" id="taxa-juros">
+                <br>
+                <label>Periodo</label> <br>
+                <input type="number" id="periodo">
+                <br>
+                <button id="botao-limpar" onclick="limparDados()">LIMPAR</button>
+                <button id="botao-calcular" onclick="calcularJuros()">CALCULAR</button>
+            </div>
+        </section>
+    </body>
+    <script src="script.js"></script>
+</body>
+</html>
