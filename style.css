@@ -27,15 +27,14 @@ font: var(--FonteInputs);
     font: var(--CorFundoH1);
     background-image: url(assets/bg-h1.png);
     background-attachment: fixed;
-    background-repeat: no-repeat;
-    
+    background-repeat: no-repeat;    
 }
 h1{
     margin: 0px;
     position: absolute;
     top: 40vh;
     color: var(--CorLetrasLabel);
-    background-color: var(--CorFundoH1);
+   background-color: var(--CorFundoH1);
    padding-top:50px;
    padding-bottom: 50px;
    font-size: 3vw;
@@ -43,7 +42,7 @@ h1{
    letter-spacing: 0.4em;
    width: 49.5vw;
    padding-left: 5px;
-   transition: 1s;
+  transition: 1s;
 
 }
 .dados{

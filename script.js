@@ -4,8 +4,10 @@ function calcularJuros(){
     var TaxaJuros= Number(document.getElementById("taxa-juros").value)
     var Periodo= Number(document.getElementById("periodo").value)
 
-    var montate = (ValorInicial*((1+TaxaJuros)**Periodo))
-    alert(montate)
+    TaxaJuros=(1+(TaxaJuros/100))
+    var montate = (ValorInicial*(Math.pow(TaxaJuros, Periodo)))
+
+    alert(montate.toFixed(2))
 }
 
 function limparDados(){
