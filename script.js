@@ -1,15 +1,50 @@
 function calcularJuros(){
-    var ValorInicial=Number(document.getElementById("valor-inicial").value)
-    var ValorMensal= Number(document.getElementById("valor-mensal").value)
-    var TaxaJuros= Number(document.getElementById("taxa-juros").value)
-    var Periodo= Number(document.getElementById("periodo").value)
+    var valorInicial=Number(document.getElementById("valor-inicial").value)
+    var valorMensal= Number(document.getElementById("valor-mensal").value)
+    var elementoTaxaJuros= Number(document.getElementById("taxa-juros").value)
+    var elementoPeriodo= Number(document.getElementById("periodo").value)
+    var valorFinal=0
+    var valorJuros=tipostaxasJuros(elementoTaxaJuros)
+    var tempoInvestido = periodoTempo(elementoPeriodo)
 
-    TaxaJuros=(1+(TaxaJuros/100))
-    var montate = (ValorInicial*(Math.pow(TaxaJuros, Periodo)))
+    for (let index = 0; index <= tempoInvestido; index++) {
+        montate= valorInicial+(valorInicial/100*valorJuros)
+        valorInicial= montate+valorMensal
+        valorFinal=montate
+    }
+    valorFinal= valorFinal.toLocaleString('pt-BR',{style:'currency', currency:'BRL'});
+    mostrarNaTela(valorFinal)
+    alert(tempoInvestido)
+}
+function tipostaxasJuros(taxaJuros) {
+    var elementoTipoJuros = document.querySelector('select','#tipoTaxas' )
+    var optionSelecionadoJuros = elementoTipoJuros.options[elementoTipoJuros.selectedIndex].value;
+   if (optionSelecionadoJuros==="taxaAnual") {
+        var valorTaxaMensal = taxaJuros/12
+        return valorTaxaMensal
+   } else {
+        return taxaJuros
+   }
+}
+function periodoTempo(tempo) {
+    var elementoTiposPeriodos = document.getElementById('tiposPeriodos')
+    var optionSelecionadoPeriodos = elementoTiposPeriodos.options[elementoTiposPeriodos.selectedIndex].value;
+    
+    if (optionSelecionadoPeriodos=="anual") {
+        var tempoConvertido = (tempo*12)
+        return tempoConvertido
+    } else {
+        return tempo
+    }
 
-    alert(montate.toFixed(2))
+}
+function mostrarNaTela(resultado) {
+    var elementoDados= document.getElementById("dados")
+    return elementoDados.innerHTML=`<p>${resultado}</p>`;
 }
 
-function limparDados(){
 
-}
+
+/*function limparDados(valorInicial,valorMensal,taxaJuros, periodo){
+return valorInicial.innerText= '0'
+}*/
