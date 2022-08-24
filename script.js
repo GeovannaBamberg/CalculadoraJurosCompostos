@@ -39,7 +39,7 @@ function periodoTempo(tempo) {
 }
 function mostrarNaTela(resultado) {
     var elementoDados= document.getElementById("dados")
-    return elementoDados.innerHTML=`<p>${resultado}</p>`;
+    return elementoDados.innerHTML=`<p class="dados">${resultado}</p>`;
 }
 
 
