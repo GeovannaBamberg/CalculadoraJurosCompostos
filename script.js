@@ -14,7 +14,6 @@ function calcularJuros(){
     }
     valorFinal= valorFinal.toLocaleString('pt-BR',{style:'currency', currency:'BRL'});
     mostrarNaTela(valorFinal)
-    alert(tempoInvestido)
 }
 function tipostaxasJuros(taxaJuros) {
     var elementoTipoJuros = document.querySelector('select','#tipoTaxas' )

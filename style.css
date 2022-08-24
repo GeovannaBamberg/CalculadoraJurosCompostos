@@ -20,14 +20,16 @@ body{
     text-align: center;
     font: var(--FonteInputs);
     font-weight: lighter;
+ 
 }
 .bg-H1{
-    max-width: 750px;
+   /* min-width: 750px; */
     height: 100vh;
     background-image: url(assets/bg-h1.png);
     background-attachment: fixed;
     background-repeat: no-repeat;   
     position: absolute;
+    
 }
 h1{
     position: relative;
@@ -48,10 +50,10 @@ h1{
     font-weight: bold;
 }
 .inputs{
-    max-width:900px;
-    min-width: 150px;
+    max-width:750px;
+    min-width: 200px;
     position: absolute;
-    top: 20vh;
+    top: 17vh;
     left: 55vw;
     margin: auto;
     display: inline-block;
@@ -67,15 +69,18 @@ input{
     font: var(--FonteInputs);
     font-weight: bold;
     color: #116944;
-    max-width: 250px;
+    max-width:100%;
+
 }
 button{
     font: var(--CorLetrasLabel);
     color: var(--CorLetrasLabel);
     height: 40px;
-    max-width: 280px;
+    max-width: 180px;
+    min-width: 120px;
     border: none;
     border-radius: 5px;
+    margin-left: 5px;
 }
 #botao-calcular{
     background-color: var(--CorFundoBotaoCalcular);
@@ -93,6 +98,10 @@ select{
     border-radius: 20px;
     background-color: var(--CorLetrasLabel);
     height: 5vh;
+    background-color: var(--CorBackGround);
+    border: none;
+    color: var(--CorFundoBotaoCalcular);
+    font: var(--FonteInputs);
 }
 label{
     font-size: 1em;
