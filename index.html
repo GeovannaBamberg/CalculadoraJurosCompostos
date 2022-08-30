@@ -14,32 +14,12 @@
                 <h1>CALCULADORA <br>JUROS<br> COMPOSTOS</h1>
             </div>
             <div class="inputs" >
-                    <div id="dados">
-                        <label>Deposito Inicial</label> <br>
-                        <input type="number" id="valor-inicial">
-                        <br>
-                        <label>Deposito Mensal</label> <br>
-                        <input type="number" id="valor-mensal">
-                        <br>
-                        <label>Taxa de Juros</label> 
-                        <select id="tipoTaxas">
-                            <option value="taxaAnual">Ano</option>
-                            <option value="taxaMensal">Meses</option>
-                        </select>
-                        <br>
-                        <input type="number" id="taxa-juros">
-                        <br>
-                        <label>Periodo</label>                         
-                        <select id="tiposPeriodos">
-                            <option value="anual">Anos</option>
-                            <option value="mensal">Meses</option>
-                        </select> <br>
-                        <input type="number" id="periodo">
-                        <br>
+                   <div id="dados">
+
                     </div>
                     <div class="botoes">
                         <button id="botao-limpar" onclick="limparDados()">LIMPAR</button>
-                        <button id="botao-calcular" onclick="calcularJuros()">CALCULAR</button>
+                        <button id="botao-calcular" onclick="botaoCalcular()" >CALCULAR</button>
                     </div>
                 </div>
         </section>

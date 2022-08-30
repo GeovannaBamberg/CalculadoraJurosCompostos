@@ -1,49 +1,90 @@
-function calcularJuros(){
-    var valorInicial=Number(document.getElementById("valor-inicial").value)
-    var valorMensal= Number(document.getElementById("valor-mensal").value)
-    var elementoTaxaJuros= Number(document.getElementById("taxa-juros").value)
-    var elementoPeriodo= Number(document.getElementById("periodo").value)
-    var valorFinal=0
-    var valorJuros=tipostaxasJuros(elementoTaxaJuros)
-    var tempoInvestido = periodoTempo(elementoPeriodo)
+telaInputs()
+function telaInputs() {
+    var elementoDados=document.getElementById("dados")
+    elementoDados.className="telaInputAberta"
+    elementoDados.innerHTML=`
+    <label>Deposito Inicial</label> <br>
+    <input type="number" id="valor-inicial" >
+    <br>
+    `
+    elementoDados.innerHTML+=`
+    <label>Deposito Mensal</label> <br>
+    <input type="number" id="valor-mensal">
+    <br>`
+    elementoDados.innerHTML+=`
+    <label>Taxa de Juros</label> 
+    <select id="tipoTaxas">
+        <option value="taxaAnual">Ano</option>
+        <option value="taxaMensal">Meses</option>
+    </select>
+    <br>`
+    elementoDados.innerHTML+=`<input type="number" id="taxa-juros">
+    <br>`
+    elementoDados.innerHTML+=`
+    <label>Periodo<label>                         
+    <select id="tiposPeriodos">
+        <option value="anual">Anos</option>
+        <option value="mensal">Meses</option>
+    </select> <br>
+    <input type="number" id="periodo">
+    <br>`
+}
 
-    for (let index = 0; index <= tempoInvestido; index++) {
-        montate= valorInicial+(valorInicial/100*valorJuros)
-        valorInicial= montate+valorMensal
-        valorFinal=montate
+function botaoCalcular(){
+    const elementoDados= document.getElementById("dados");
+    if (elementoDados.className=='telaInputFechada') {
+        telaInputs()
+    } else {
+        calcularJurosCompostos()
     }
-    valorFinal= valorFinal.toLocaleString('pt-BR',{style:'currency', currency:'BRL'});
-    mostrarNaTela(valorFinal)
+}
+function limparDados(){
+    return telaInputs()
+}
+function calcularJurosCompostos() {
+    var valorInicial=Number(document.getElementById("valor-inicial").value);
+    var valorMensal= Number(document.getElementById("valor-mensal").value);
+    var taxaJuros= Number(document.getElementById("taxa-juros").value);
+    var periodo= Number(document.getElementById("periodo").value);
+    var valorFinal=0;
+    var taxaJuros=tipostaxasJuros(taxaJuros);
+    var periodo = conversorTempo(periodo);
+    if ((taxaJuros=== 0)&&(periodo===0)) {
+        alert('Não dar para continuar sem os dados da taxa de juros e o periodo')
+    } else {
+        for (let index = 0; index <= periodo; index++) {
+            montate= valorInicial+(valorInicial/100*taxaJuros);
+            valorInicial= montate+valorMensal;
+            valorFinal=montate;
+        }
+        mostrarNaTela(valorFinal);
+    }
 }
 function tipostaxasJuros(taxaJuros) {
-    var elementoTipoJuros = document.querySelector('select','#tipoTaxas' )
+    var elementoTipoJuros = document.querySelector('select','#tipoTaxas' );
     var optionSelecionadoJuros = elementoTipoJuros.options[elementoTipoJuros.selectedIndex].value;
    if (optionSelecionadoJuros==="taxaAnual") {
-        var valorTaxaMensal = taxaJuros/12
-        return valorTaxaMensal
+        var valorTaxaMensal = (taxaJuros/12);
+        return valorTaxaMensal;
    } else {
-        return taxaJuros
-   }
-}
-function periodoTempo(tempo) {
-    var elementoTiposPeriodos = document.getElementById('tiposPeriodos')
-    var optionSelecionadoPeriodos = elementoTiposPeriodos.options[elementoTiposPeriodos.selectedIndex].value;
-    
-    if (optionSelecionadoPeriodos=="anual") {
-        var tempoConvertido = (tempo*12)
-        return tempoConvertido
-    } else {
-        return tempo
+        return taxaJuros;
     }
-
 }
-function mostrarNaTela(resultado) {
-    var elementoDados= document.getElementById("dados")
-    return elementoDados.innerHTML=`<p class="dados">${resultado}</p>`;
+function conversorTempo(periodo) {
+    var elementoTiposPeriodos = document.getElementById('tiposPeriodos');
+    var optionSelecionadoPeriodos = elementoTiposPeriodos.options[elementoTiposPeriodos.selectedIndex].value;
+    if (optionSelecionadoPeriodos=="anual") {
+        var tempoConvertido = (periodo*12);
+        return tempoConvertido;
+    } else {
+        return periodo;
+    }
+}
+function mostrarNaTela(valorFinal) {
+    valorFinal= valorFinal.toLocaleString('pt-BR',{style:'currency', currency:'BRL'});
+    const elementoDados= document.getElementById("dados");
+    elementoDados.className="telaInputFechada"
+    elementoDados.innerHTML= `<div class="resultado"><Label>Valor Final</Label><br>
+    <div id="localResultado" >${valorFinal}</div> </div>`
 }
 
-
-
-/*function limparDados(valorInicial,valorMensal,taxaJuros, periodo){
-return valorInicial.innerText= '0'
-}*/
