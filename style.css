@@ -54,7 +54,7 @@ h1{
     min-width: 200px;
     position: absolute;
     top: 17vh;
-    left: 50vw;
+    left: 53vw;
     margin: auto;
     display: inline-block;
     color: var(--CorLetrasLabel);
@@ -106,12 +106,6 @@ select{
 label{
     font-size: 1em;
     text-align: center;
-}
-.telaInputAberta{
-    display:block;
-}
-.telaInputFechada{
-    display: block;
 }
 button:disabled{
     background-color: beige;

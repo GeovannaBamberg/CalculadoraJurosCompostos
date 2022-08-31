@@ -1,25 +1,24 @@
 telaInputs()
 function telaInputs() {
-    var elementoDados=document.getElementById("dados")
+    const elementoDados= document.getElementById("dados");
     elementoDados.className="telaInputAberta"
     elementoDados.innerHTML=`
     <label>Deposito Inicial</label> <br>
     <input type="number" id="valor-inicial" >
-    <br>
-    `
+    <br>`;
     elementoDados.innerHTML+=`
     <label>Deposito Mensal</label> <br>
     <input type="number" id="valor-mensal">
-    <br>`
+    <br>`;
     elementoDados.innerHTML+=`
     <label>Taxa de Juros</label> 
     <select id="tipoTaxas">
         <option value="taxaAnual">Ano</option>
         <option value="taxaMensal">Meses</option>
     </select>
-    <br>`
+    <br>`;
     elementoDados.innerHTML+=`<input type="number" id="taxa-juros">
-    <br>`
+    <br>`;
     elementoDados.innerHTML+=`
     <label>Periodo<label>                         
     <select id="tiposPeriodos">
@@ -27,19 +26,15 @@ function telaInputs() {
         <option value="mensal">Meses</option>
     </select> <br>
     <input type="number" id="periodo">
-    <br>`
+    <br>`;
 }
 
 function botaoCalcular(){
     const elementoDados= document.getElementById("dados");
-    if (elementoDados.className=='telaInputFechada') {
-        telaInputs()
-    } else {
-        calcularJurosCompostos()
-    }
+    elementoDados.className=='telaInputFechada'? telaInputs():calcularJurosCompostos();
 }
 function limparDados(){
-    return telaInputs()
+    return telaInputs();
 }
 function calcularJurosCompostos() {
     var valorInicial=Number(document.getElementById("valor-inicial").value);
@@ -50,7 +45,7 @@ function calcularJurosCompostos() {
     var taxaJuros=tipostaxasJuros(taxaJuros);
     var periodo = conversorTempo(periodo);
     if ((taxaJuros=== 0)&&(periodo===0)) {
-        alert('Não dar para continuar sem os dados da taxa de juros e o periodo')
+        alert('Não dar para continuar sem os dados da taxa de juros e o periodo');
     } else {
         for (let index = 0; index <= periodo; index++) {
             montate= valorInicial+(valorInicial/100*taxaJuros);
@@ -83,8 +78,7 @@ function conversorTempo(periodo) {
 function mostrarNaTela(valorFinal) {
     valorFinal= valorFinal.toLocaleString('pt-BR',{style:'currency', currency:'BRL'});
     const elementoDados= document.getElementById("dados");
-    elementoDados.className="telaInputFechada"
+    elementoDados.className="telaInputFechada";
     elementoDados.innerHTML= `<div class="resultado"><Label>Valor Final</Label><br>
-    <div id="localResultado" >${valorFinal}</div> </div>`
+    <div id="localResultado" >${valorFinal}</div> </div>`;
 }
-
