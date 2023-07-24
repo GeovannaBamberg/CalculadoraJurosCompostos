@@ -81,4 +81,5 @@ function mostrarNaTela(valorFinal) {
     elementoDados.className="telaInputFechada";
     elementoDados.innerHTML= `<div class="resultado"><Label>Valor Final</Label><br>
     <div id="localResultado" >${valorFinal}</div> </div>`;
+   
 }
